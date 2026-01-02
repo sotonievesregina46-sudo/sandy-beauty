@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sandy Beauty Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* GENERAL */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #fff;
+    text-align: center;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #f700c1, #000000);
+    padding: 40px 20px;
+}
+
+/* LOGO */
+.logo {
+    background: #111;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border: 4px solid #ff69b4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: auto;
+    animation: latido 2s infinite;
+}
+
+.logo-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 2;
+}
+
+.logo-text-svg {
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    top: 0;
+    left: 0;
+}
+
+.logo-text-svg text {
+    fill: #ff69b4;
+    font-size: 14px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+.slogan {
+    margin-top: 15px;
+    font-size: 1.2em;
+}
+
+/* SECCIONES */
+section {
+    padding: 40px 20px;
+}
+
+h2 {
+    color: #ee3dc8;
+    margin-bottom: 20px;
+}
+
+/* SERVICIOS */
+.servicios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #f521b5;
+    border: 4px solid #000000;
+    border-radius: 20px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+/* MODAL CATÁLOGO */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(24, 23, 23, 0.9);
+}
+
+.modal-contenido{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr); 
+    gap:20px;
+    padding:60px 20px;
+    justify-items:center;
+}
+
+
+.item img{
+    width:100%;
+    max-width:230px;
+    height:230px;
+    object-fit:cover;
+    border-radius:19px;
+}
+
+
+.cerrar {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    font-size: 30px;
+    color: #ff69b4;
+    cursor: pointer;
+}
+
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:60px;
+    height:60px;
+    background:#ffffff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:3000;
+    box-shadow:0 4px 10px rgba(0,0,0,0.4);
+}
+
+.whatsapp img{
+    width:90px;
+    height:80px;
+}
+.whatsapp{
+    animation:latido 2s infinite;
+}
+
+.maps{
+    position:fixed;
+    bottom:90px;      
+    right:20px;
+    width:60px;
+    height:60px;
+    background:#fff;
+    border-radius:50%;
+    align-items:center;
+     display:flex;
+    justify-content:center;
+    z-index:3000;
+    box-shadow:0 4px 10px rgba(0,0,0,0.4);
+}
+
+.maps img{
+    width:90px;
+    height:90px;
+}
+
+.maps{
+    animation:latido 2s infinite;
+}
+
+/* VISOR IMAGEN */
+.visor{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.95);
+    z-index:4000; 
+    align-items:center;
+    justify-content:center;
+}
+
+.visor img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:15px;
+    border:4px solid #ff69b4;
+}
+
+.cerrar-visor{
+    position:absolute;
+    top:20px;
+    right:25px;
+    font-size:30px;
+    color:#ff69b4;
+    cursor:pointer;
+}
+
+
+/* FOOTER */
+footer {
+    background: #111111;
+    padding: 15px 15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <!-- LOGO -->
+    <div class="logo">
+        <img src="SANDY.png" class="logo-img">
+
+        <svg viewBox="1 7 200 200" class="logo-text-svg">
+            <defs>
+                <path id="curve" d="M 20 120 A 80 80 0 0 0 180 120"/>
+            </defs>
+            <text>
+                <textPath href="#curve" startOffset="50%" text-anchor="middle">
+                    Beauty Studio
+                </textPath>
+            </text>
+        </svg>
+    </div>
+
+    <p class="slogan">Belleza con estilo, dulzura y glamour 💖</p>
+</header>
+
+<section>
+<h2>✨ Servicios ✨</h2>
+
+<div class="servicios">
+    <div class="card" onclick="abrirCatalogo('cortes')">
+        <img src="cortesDama.png" width="127">
+        <h3>Cortes Dama</h3>
+        <p>Estilo y tendencia</p>
+    </div>
+
+    <div class="card" onclick="abrirCatalogo('alaciado')">
+        <img src="alaciado.png" width="150">
+        <h3>Alaciado</h3>
+        <p>Keratina permanente</p>
+    </div>
+
+    <div class="card" onclick="abrirCatalogo('peinado')">
+         <img src="peinados.png" width="150">
+        <h3>Peinado Social</h3>
+        <p>Eventos y fiestas</p>
+    </div>
+
+    <div class="card" onclick="abrirCatalogo('maquillaje')">
+        <img src="maquillaje.png" width="145">
+        <h3>Maquillaje Social</h3>
+        <p>Natural y glam</p>
+    </div>
+
+    <div class="card" onclick="abrirCatalogo('unas')">
+         <img src="uñas.png" width="145">
+        <h3>Uñas</h3>
+        <p>Gelish y Acrílico</p>
+    </div>
+
+    <div class="card" onclick="abrirCatalogo('cabello')">
+         <img src="cabello.png" width="115">
+        <h3>Cabello</h3>
+        <p>Extensiones, tratamientos y color</p>
+    </div>
+
+    <div class="card" onclick="abrirCatalogo('pestanas')">
+         <img src="pestañas.png" width="330">
+        <h3>Pestañas</h3>
+        <p>Lash lifting y extensiones</p>
+    </div>
+
+    <div class="card" onclick="abrirCatalogo('manicure')">
+        <img src="manicure.png" width="145">
+        <h3>Manicure & Pedicure</h3>
+        <p>Cuidado total</p>
+    </div>
+
+     <div class="card" onclick="abrirCatalogo('cejas')">
+         <img src="ceja.png" width="150">
+        <h3>Cejas</h3>
+        <p>Laminado con pigmento</p>
+    </div>
+</div>
+<!-- MODAL -->
+<div id="catalogo" class="modal">
+    <span class="cerrar" onclick="cerrarCatalogo()">✖</span>
+    <div class="modal-contenido" id="contenido"></div>
+</div>
+
+<a class="whatsapp" href="https://wa.me/524427215943?text=Hola%20quiero%20agendar%20una%20cita%20en%20Sandy%20Beauty%20Studio" target="_blank">
+    <img src="icono.png" alt="WhatsApp">
+</a>
+
+<a class="maps" 
+   href="https://www.google.com/maps/search/?api=1&query=https://maps.google.com/maps?q=20.548580169677734%2C-100.41840362548828&z=17&hl=es" 
+   target="_blank">
+    <img src="mapa.png" alt="Ubicación">
+</a>
+
+<script>
+function abrirCatalogo(tipo){
+    const contenido=document.getElementById("contenido");
+    contenido.innerHTML="";
+
+    const datos={
+        cortes:[
+         ["corte1.jpg"],
+             ["corte2.jpg"],
+              ["corte3.jpg"],
+               ["corte4.jpg"]
+        ],
+        alaciado:[
+            ["alaciado1.jpg"],
+             ["alaciado2.jpg"],
+              ["alaciado3.png"],
+               ["alaciado4.png"]
+        ],
+        peinado:[
+              ["peinado1.jpg"],
+             ["peinado2.jpg"],
+              ["peinado3.jpg"],
+               ["peinado4.jpg"]
+        ],
+        maquillaje:[
+          ["maquillaje1.jpg"],
+             ["maquillaje2.jpg"],
+              ["maquillaje3.jpg"],
+               ["maquillaje4.jpg"]
+        ],
+        unas:[
+            ["uñas1.jpg"],
+             ["uñas2.jpg"],
+              ["uñas3.png"],
+               ["uñas4.png"]
+        ],
+        cabello:[
+         ["cabello1.jpg"],
+             ["cabello2.jpg"],
+              ["cabello3.jpg"],
+               ["cabello4.jpg"]
+        ],
+        pestanas:[
+             ["pestañas1.jpg"],
+             ["pestañas2.jpg"],
+              ["pestañas3.jpg"],
+               ["pestañas4.jpg"]
+        ],
+        manicure:[
+          ["manicure1.png"],
+             ["manicure2.jpg"],
+              ["manicure3.jpg"],
+               ["manicure4.jpg"]
+        ],
+        cejas:[
+          ["cejas1.jpg"],
+             ["cejas2.jpg"],
+              ["cejas3.jpg"],
+               ["cejas4.jpg"]
+        ]
+    };
+
+    datos[tipo].forEach(item=>{
+        contenido.innerHTML+=`
+   <div class="item">
+    <img src="${item[0]}" onclick="verImagen('${item[0]}')">
+        </div>`;
+    });
+
+    document.getElementById("catalogo").style.display="block";
+}
+
+function cerrarCatalogo(){
+    document.getElementById("catalogo").style.display="none";
+}
+</script>
+<br>
+<footer>
+    <p>© 2026 Sandy Beauty Studio</p>
+</footer>
+<!-- VISOR DE IMAGEN GRANDE -->
+<div id="visorImagen" class="visor">
+    <span class="cerrar-visor" onclick="cerrarImagen()">✖</span>
+    <img id="imagenGrande">
+</div>
+
+<script>
+function verImagen(src){
+    document.getElementById("imagenGrande").src = src;
+    document.getElementById("visorImagen").style.display = "flex";
+}
+
+function cerrarImagen(){
+    document.getElementById("visorImagen").style.display = "none";
+}
+</script>
+</div>
+</body>
+</html>
